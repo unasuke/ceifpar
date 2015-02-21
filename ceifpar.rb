@@ -1,4 +1,4 @@
-#!/usr/bin/ruby
+#!/usr/bin/env ruby
 #ceifpar
 #conceal(clear) exif info from photo and resize it.
 
