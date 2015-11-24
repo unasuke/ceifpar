@@ -1,53 +1,26 @@
 #!/usr/bin/env ruby
-#ceifpar
-#conceal(clear) exif info from photo and resize it.
 
 require 'optparse'
-#require 'rugygems'
-require 'rmagick'
-#require 'mimemagic'
+require 'ceifpar'
 
-def is_jpeg? filepath
-  if File.extname(filepath).downcase =~ /jpe?g/ then
-    return true
-  else
-    return false
-  end
-end
+rate = nil
+opt = OptionParser.new
+opt.on('-r VAL', '--rate=VAL', 'resize rate') { |v| rate = v }
+opt.parse!(ARGV)
 
-#example for resize ratio format
-# "1/2" , "0.5" , "50%" -> 0.5
-def normalize_ratio str
-  #fraction
-  if str.include?("/") then
-    rat = str.partition("/")
-    ratio = Rational(rat[0].to_f , rat[2].to_f).to_f
-  #percent
-  elsif str.include?("%") then
-    ratio = str.to_f / 100
-  #decimal
-  else
-    ratio = str.to_f
-  end
-  return ratio
-end
-
-params = ARGV.getopts('r:')
 ARGV.each{ |arg|
-  if is_jpeg?(arg) then
-    #open image
-    img = Magick::ImageList.new(arg)
+  if Ceifpar.is_jpeg?(arg)
+    dst_image = Magick::ImageList.new(path)
+    Ceifpar.remove_exif!(arg)
 
-    #resize image
-    img.resize!(normalize_ratio(params["r"])) unless params["r"] == nil
+    if rate
+      ratio = Ceifpar.normalize_ratio(rate)
+      dst_image = Ceifpar.resize_image(dst_image)
+    end
 
-    #delete exif
-    img.strip!
-
-    #output image
-    dst = File.basename(arg)
-    dst[/\./] = "-dst."
-    img.write(dst)
+    dst_path = File.basename(arg)
+    dst_path[/\./] = '=dst.'
+    dst_image.write(dst_path)
 
   else
     warn "#{arg} is not jpeg image."
