@@ -1,8 +1,6 @@
-# Ceifpar
+# Ceifpar [![Build Status](https://travis-ci.org/unasuke/ceifpar.svg)](https://travis-ci.org/unasuke/ceifpar)
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/ceifpar`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Ceifpar is the ruby script to conceal(clear) exif info from photo and resize it.
 
 ## Installation
 
@@ -21,8 +19,15 @@ Or install it yourself as:
     $ gem install ceifpar
 
 ## Usage
+```shell
+#delete exif information and resize image to half
+$ ceifpar -r 1/2 hoge.jpg
+$ ceifpar -r 0.5 hoge.jpg
+$ ceifpar -r 50% hoge.jpg
 
-TODO: Write usage instructions here
+#delete exif information only
+$ ceifpar hoge.jpg
+```
 
 ## Development
 
@@ -32,7 +37,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/ceifpar.
+Bug reports and pull requests are welcome on GitHub at https://github.com/unasuke/ceifpar.
 
 
 ## License
