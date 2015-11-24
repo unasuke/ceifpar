@@ -1,45 +1,46 @@
-# Ceifpar
+# Ceifpar [![Build Status](https://travis-ci.org/unasuke/ceifpar.svg)](https://travis-ci.org/unasuke/ceifpar)
+
 Ceifpar is the ruby script to conceal(clear) exif info from photo and resize it.
+
+## Installation
+
+Add this line to your application's Gemfile:
+
+```ruby
+gem 'ceifpar'
+```
+
+And then execute:
+
+    $ bundle
+
+Or install it yourself as:
+
+    $ gem install ceifpar
 
 ## Usage
 ```shell
 #delete exif information and resize image to half
-$ ruby ceifpar.rb -r 1/2 hoge.jpg
-$ ruby ceifpar.rb -r 0.5 hoge.jpg
-$ ruby ceifpar.rb -r 50% hoge.jpg
+$ ceifpar -r 1/2 hoge.jpg
+$ ceifpar -r 0.5 hoge.jpg
+$ ceifpar -r 50% hoge.jpg
 
 #delete exif information only
-$ ruby ceifpar.rb hoge.jpg
+$ ceifpar hoge.jpg
 ```
 
-## Dependency
-- [imagemagick](http://www.imagemagick.org/)
-- [RMagick](https://github.com/rmagick/rmagick)
+## Development
 
-## Install
-### OS X
-```shell
-# homebrew
-$ brew install imagemagick
+After checking out the repo, run `bin/setup` to install dependencies. Then, run `rake test` to run the tests. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
 
-# MacPorts
-$ sudo port install imagemagick
+To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
 
-$ gem install rmagick
-$ git clone https://github.com/unasuke/ceifpar.git
-```
+## Contributing
 
-### Linux
-```shell
-# apt
-$ sudo apt-get install imagemagick
+Bug reports and pull requests are welcome on GitHub at https://github.com/unasuke/ceifpar.
 
-# yum
-$ yum install imagemagick
-
-$ gem install rmagick
-$ git clone https://github.com/unasuke/ceifpar.git
-```
 
 ## License
-This software is released under the MIT License, see LICENSE.
+
+The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
