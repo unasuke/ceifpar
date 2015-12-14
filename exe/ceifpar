@@ -19,7 +19,7 @@ ARGV.each{ |arg|
     end
 
     dst_path = File.basename(arg)
-    dst_path[/\./] = '=dst.'
+    dst_path[/\./] = '_dst.'
     dst_image.write(dst_path)
 
   else
