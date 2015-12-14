@@ -10,8 +10,8 @@ opt.parse!(ARGV)
 
 ARGV.each{ |arg|
   if Ceifpar.is_jpeg?(arg)
-    dst_image = Magick::ImageList.new(path)
-    Ceifpar.remove_exif!(arg)
+    dst_image = Magick::ImageList.new(arg)
+    Ceifpar.remove_exif!(dst_image)
 
     if rate
       ratio = Ceifpar.normalize_ratio(rate)
